@@ -2,19 +2,19 @@
 #include "wx_vote_session.hpp"
 #include "main_task.hpp"
 #include "task_processor.hpp"
+#include "config_mgr.hpp"
 
 int main(int argc, char* argv[])
 {
+    if ( !mpsp::config_mgr::get().init() ||
+         !mpsp::device_mgr::get().init() ||
+         !mpsp::wx_account_mgr::get().init())
+    {
+        return -1;
+    }
     mpsp::main_task s(mpsp::task_processor::get().get_io_service());
     mpsp::task_processor::get().push_task(boost::bind(&mpsp::main_task::start, &s));
 
-    //测试3秒后运行一个任务
-    //boost::asio::deadline_timer::duration_type td(0, 0, 3, 0);
-    //mpsp::task_processor::get().run_after(td, &test);
-
-    //测试2016-04-25 15:08:00运行一个任务
-    //boost::posix_time::ptime p(boost::gregorian::date(2016, 4, 25), boost::posix_time::hours(15 - 8) + boost::posix_time::minutes(8));
-    //mpsp::task_processor::get().run_at(p, &test);
     mpsp::task_processor::get().start();
 
     return 0;

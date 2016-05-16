@@ -23,6 +23,7 @@ class phone_connection
     , private boost::noncopyable
 {
 private:
+    boost::asio::io_service& ios_;
     boost::asio::ip::tcp::socket socket_;
     std::array<char, 8192> buffer_;
 
@@ -30,7 +31,7 @@ _SIGNALS:
     boost::signals2::signal<void(int)> op_ok_sig_;
 
 public:
-    phone_connection(boost::asio::io_service& io_service);
+    phone_connection();
 
     boost::asio::ip::tcp::socket& socket();
 
@@ -41,7 +42,7 @@ public:
     void handle_read(const boost::system::error_code& e,
         std::size_t bytes_transferred);
 
-    void do_read_msg(const MSG_CMD_APP& mca);
+    void do_read_msg(const MSG_CMD_APP_RECV& mca);
 
     void handle_write(const boost::system::error_code& e);
 

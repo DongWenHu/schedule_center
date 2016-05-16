@@ -16,31 +16,19 @@ wx_vote::wx_vote()
 
 void wx_vote::do_task(boost::property_tree::ptree& pt, std::string& result)
 {
-    // 重复执行3次
-    int repeat_cnt = 3;
-    do
+    target_count = pt.get<int>("votes_cnt");
+
+    boost::thread_group threads;
+    for (auto c : device_mgr::get().get_devices_pro_copy())
     {
-        boost::thread_group threads;
-        std::vector<boost::shared_ptr<wx_vote_session> > wx_vote_seses;
-        for (auto c : device_mgr::get().get_devices_pro_copy())
-        {
-            if (c.second.status != DEVICE_STATUS_ONLINE)
-                continue;
+        if (c.second.status != DEVICE_STATUS_ONLINE)
+            continue;
 
-            boost::shared_ptr<wx_vote_session> wx_vote_ses(new wx_vote_session(c.first, SCRIPT_PORT, pt, this));
-            wx_vote_seses.push_back(wx_vote_ses);
-            threads.create_thread(boost::bind(&wx_vote_session::start, wx_vote_ses));
-        }
+        boost::shared_ptr<wx_vote_session> wx_vote_ses(new wx_vote_session(c.first, SCRIPT_PORT, pt, this));
+        threads.create_thread(boost::bind(&wx_vote_session::start, wx_vote_ses));
+    }
 
-        threads.join_all();
-        --repeat_cnt;
-
-        // 达到投票指定数目或者重复执行了3次就退出循环
-        if (pt.get<int>("votes_cnt") <= success_count || repeat_cnt == 0)
-        {
-            break;
-        }
-    } while (true);
+    threads.join_all();
 
     boost::format fmter(kvote_ret_fmt);
     fmter % pt.get<int>("task_id")
@@ -52,9 +40,14 @@ void wx_vote::do_task(boost::property_tree::ptree& pt, std::string& result)
 
 void wx_vote::add_suc_count(int n)
 {
-    boost::unique_lock<boost::mutex> lock(suc_cnt_mutex);
+    writeLock lock(suc_cnt_mutex);
     success_count += n;
-    lock.unlock();
+}
+
+bool wx_vote::need_vote()
+{
+    readLock lock(suc_cnt_mutex);
+    return target_count > success_count;
 }
 
 }

@@ -8,14 +8,16 @@
 #include "protocol_define.h"
 #include "wx_vote.hpp"
 #include "sche_conn_pool.hpp"
+#include "typedefs.h"
 
 namespace mpsp{
 
 const char* const kerror_ret_fmt = "{\"task_id\":%1%,\"task_cmd\":%2%,\"result_code\":%3%, \"msg\":\"%4%\"}";
 const char* const kerror_ret_fmt2 = "{\"result_code\":%1%, \"msg\":\"%2%\"}";
 
-schedule_connection::schedule_connection(boost::asio::io_service& io_service)
-    : socket_(io_service)
+schedule_connection::schedule_connection()
+    : ios_(mpsp::task_processor::get().get_io_service())
+    , socket_(ios_)
 {
 }
 
@@ -44,24 +46,32 @@ void schedule_connection::stop()
 
 void schedule_connection::run_work_queue()
 {
-    std::array<char, 8192> task;
+    std::string task;
     std::string result;
     while (!(task = sche_work_queue_.pop_task()).empty())
     {
-        std::stringstream ss;
-        ss << task.data();
-        do_task(ss, result);
-        socket_.write_some(boost::asio::buffer(result));
+        do_task(task, result);
+        if (socket_.is_open())
+        {
+            int len = result.length();
+            char* p_send = new char[len + 4];
+            memcpy(p_send, &len, 4);
+            memcpy(p_send + 4, result.data(), len);
+            socket_.write_some(boost::asio::buffer(p_send, len + 4));
+            delete p_send;
+        }
     }
 }
 
-void schedule_connection::do_task(std::stringstream& task, std::string& result)
+void schedule_connection::do_task(const std::string& task, std::string& result)
 {
     boost::property_tree::ptree pt;
 
     try
     {
-        boost::property_tree::read_json<boost::property_tree::ptree>(task, pt);
+        std::stringstream ss;
+        ss << task.c_str();
+        boost::property_tree::read_json<boost::property_tree::ptree>(ss, pt);
 
         boost::shared_ptr<task_interface> task_i;
 
@@ -92,10 +102,10 @@ void schedule_connection::do_task(std::stringstream& task, std::string& result)
 
         task_i->do_task(pt, result);
     }
-    catch (boost::property_tree::json_parser_error& e)
+    catch (boost::property_tree::json_parser_error&)
     {
         boost::format fmter(kerror_ret_fmt2);
-        fmter % -1 % e.what();
+        fmter % -1 % "format error";
         result = fmter.str();
     }
 }
@@ -105,9 +115,13 @@ void schedule_connection::handle_read(const boost::system::error_code& e,
 {
     if (!e)//接收时没有发生错误
     {
-        //std::stringstream ss;
-        //ss << buffer_.data();
-        sche_work_queue_.push_task(buffer_);
+        MSG_CMD_SCHE_RECV mcsr;
+        memcpy(&mcsr.len, buffer_.data(), 4);
+        mcsr.json_data = buffer_.data() + 4;
+        mcsr.json_data[mcsr.len] = 0;
+
+        _DEBUG_PRINTF("%s (schedule) says: %s\n", socket_.remote_endpoint().address().to_string().c_str(), mcsr.json_data.c_str());
+        sche_work_queue_.push_task(mcsr.json_data);
         socket_.async_read_some(boost::asio::buffer(buffer_),
             boost::bind(&schedule_connection::handle_read,
             shared_from_this(),

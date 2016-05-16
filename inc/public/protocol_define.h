@@ -23,18 +23,15 @@ const char* const CMD_WX_ADD_NEAR_FRIEND = "00000014";    //通过附近的人添加好友
 const char* const CMD_WX_UPDATE_SEX = "00000015";    //更改性别
 const char* const CMD_WX_RANDOM_SEND_MSG = "00000016";    //随机给好友发消息
 const char* const CMD_WX_RANDOM_SEND_SNS = "00000017";    //随机发朋友圈
+const char* const CMD_WX_CLEAR_MSG_RECORD = "00000018"; //清除聊天记录
 
-typedef struct _MSG_CMD_LUA
+typedef struct _MSG_CMD_LUA_SEND
 {
-    std::string len;
+    char len[4];
     std::string json_data;
+}MSG_CMD_LUA_SEND;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-        ar & len & json_data;
-    }
-}MSG_CMD_LUA;
+typedef MSG_CMD_LUA_SEND MSG_CMD_LUA_RECV;
 
 
 //----------------------------APP 命令-------------------------------------
@@ -45,21 +42,28 @@ const int CMD_APP_STOP_LUA          =       0x00000003; //  停止lua脚本
 const int CMD_APP_REBOOT            =       0x00000004; //  重启设备
 const int CMD_APP_INSTALL_APK       =       0x00000005; //  安装APK
 
-typedef struct _MSG_CMD_APP
+typedef struct _MSG_CMD_APP_SEND
+{
+    int cmd;
+}MSG_CMD_APP_SEND;
+
+typedef struct _MSG_CMD_APP_RECV
 {
     int cmd;
     int result;
-
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
-    {
-        ar & cmd & result;
-    }
-}MSG_CMD_APP;
+}MSG_CMD_APP_RECV;
 
 
 //----------------------------schedule 命令--------------------------------
 const int CMD_SCHE_WX_VOTE = 0x10000000;    //  投票命令
+
+typedef struct _MSG_CMD_SCHE_SEND
+{
+    int len;
+    std::string json_data;
+}MSG_CMD_SCHE_SEND;
+
+typedef MSG_CMD_SCHE_SEND MSG_CMD_SCHE_RECV;
 
 
 //----------------------------some port------------------------------------

@@ -16,7 +16,7 @@ main_task::main_task(boost::asio::io_service& ios)
 #if defined(SIGQUIT)
     signals_.add(SIGQUIT);
 #endif // defined(SIGQUIT)
-    //signals_.async_wait(boost::bind(&main_task::handle_stop, this));
+    signals_.async_wait(boost::bind(&main_task::handle_stop, this));
 
     listen_(phone_acceptor_, boost::lexical_cast<std::string>(PHONE_PORT));
     listen_(schedule_acceptor_, boost::lexical_cast<std::string>(SCHEDULE_PORT));
@@ -37,12 +37,12 @@ void main_task::start()
 {
     start_phone_accept();
     start_schedule_accept();
-    //keep_wx_account_task_.start();
+    keep_wx_account_task_.start();
 }
 
 void main_task::start_phone_accept()
 {
-    new_phone_connection_.reset(new phone_connection(io_service_));
+    new_phone_connection_.reset(new phone_connection());
 
     phone_acceptor_.async_accept(new_phone_connection_->socket(),
         boost::bind(&main_task::handle_phone_accept, this,
@@ -51,7 +51,7 @@ void main_task::start_phone_accept()
 
 void main_task::start_schedule_accept()
 {
-    new_sche_connection_.reset(new schedule_connection(io_service_));
+    new_sche_connection_.reset(new schedule_connection());
 
     schedule_acceptor_.async_accept(new_sche_connection_->socket(),
         boost::bind(&main_task::handle_schedule_accept, this,
@@ -66,8 +66,8 @@ void main_task::handle_phone_accept(const boost::system::error_code& e)
     }
     if (!e)
     {
+        _DEBUG_PRINTF("%s (phone) connected me!\n", new_phone_connection_->socket().remote_endpoint().address().to_string().c_str());
         pho_conn_pool::get().start(new_phone_connection_);
-        //printf("%s online!\n", new_phone_connection_->socket().remote_endpoint().address().to_string().c_str());
     }
     start_phone_accept();
 }
@@ -80,6 +80,7 @@ void main_task::handle_schedule_accept(const boost::system::error_code& e)
     }
     if (!e)
     {
+        _DEBUG_PRINTF("%s (schedule) connected me!\n", new_sche_connection_->socket().remote_endpoint().address().to_string().c_str());
         sche_conn_pool::get().start(new_sche_connection_);
     }
     start_schedule_accept();

@@ -32,13 +32,13 @@ void keep_wx_account_task::start()
             boost::posix_time::seconds(rng() % 60));
         mpsp::task_processor::get().run_at(p2, boost::bind(&keep_wx_account_task::do_task, this));
     }
-
+    //boost::asio::deadline_timer::duration_type td(0, 0, 10, 0);
+    //mpsp::task_processor::get().run_after(td, boost::bind(&keep_wx_account_task::do_task, this));
 }
 
 void keep_wx_account_task::do_task()
 {
     boost::thread_group threads;
-    std::vector<boost::shared_ptr<keep_wx_account_session> > keep_wx_acc_seses;
 
     for (auto c : device_mgr::get().get_devices_pro_copy())
     {
@@ -46,11 +46,9 @@ void keep_wx_account_task::do_task()
             continue;
 
         boost::shared_ptr<keep_wx_account_session> keep_wx_acc_ses(new keep_wx_account_session(c.first, SCRIPT_PORT));
-        keep_wx_acc_seses.push_back(keep_wx_acc_ses);
         threads.create_thread(boost::bind(&keep_wx_account_session::start, keep_wx_acc_ses));
     }
-
-    threads.join_all();
+    //threads.join_all();
 }
 
 }

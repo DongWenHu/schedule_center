@@ -5,6 +5,12 @@
 
 namespace mpsp{
 
+#ifdef _DEBUG
+#define _DEBUG_PRINTF(format, ...) printf (format, ##__VA_ARGS__)
+#else
+#define _DEBUG_PRINTF(format, ...)
+#endif
+
 #define _SIGNALS  public
 #define _SLOTS    public
 

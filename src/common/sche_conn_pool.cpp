@@ -1,4 +1,5 @@
 #include "sche_conn_pool.hpp"
+#include "typedefs.h"
 
 namespace mpsp{
 
@@ -12,7 +13,8 @@ void sche_conn_pool::start(boost::shared_ptr<schedule_connection> conn)
 {
     if (connections_.size() > 0)
     {
-        conn->stop();
+        _DEBUG_PRINTF("%s (schedule) already connected me, I don't accept!\n", conn->socket().remote_endpoint().address().to_string().c_str());
+        stop(conn);
         return;
     }
 
@@ -22,6 +24,7 @@ void sche_conn_pool::start(boost::shared_ptr<schedule_connection> conn)
 
 void sche_conn_pool::stop(boost::shared_ptr<schedule_connection> conn)
 {
+    _DEBUG_PRINTF("%s (schedule) disconnected me!\n", conn->socket().remote_endpoint().address().to_string().c_str());
     connections_.erase(conn);
     conn->stop();
 }
@@ -31,6 +34,7 @@ void sche_conn_pool::stop_all()
     std::for_each(connections_.begin(), connections_.end(),
         boost::bind(&schedule_connection::stop, _1));
 
+    _DEBUG_PRINTF("disconnected all (schedule)!\n");
     connections_.clear();
 }
 

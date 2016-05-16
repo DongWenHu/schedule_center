@@ -8,14 +8,16 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/thread/mutex.hpp>
 #include "task_interface.h"
+#include "typedefs.h"
 
 namespace mpsp{
 
 class wx_vote : public task_interface
 {
 private:
-    boost::mutex   suc_cnt_mutex;
+    rwmutex suc_cnt_mutex;
     int success_count;
+    int target_count;
 
 public:
     wx_vote();
@@ -23,6 +25,8 @@ public:
     void do_task(boost::property_tree::ptree& pt, std::string& result);
 
     void add_suc_count(int);
+
+    bool need_vote();
 };
 
 }

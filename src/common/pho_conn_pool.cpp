@@ -14,6 +14,7 @@ void pho_conn_pool::start(boost::shared_ptr<phone_connection> conn)
     boost::shared_ptr<phone_connection> pconn = find_connection(conn->socket().remote_endpoint().address().to_string());
     if (pconn != NULL)
     {
+        _DEBUG_PRINTF("%s (phone) connected me again, I close last one!\n", conn->socket().remote_endpoint().address().to_string().c_str());
         stop(pconn);
     }
     device_mgr::get().set_status(conn->socket().remote_endpoint().address().to_string(), DEVICE_STATUS_ONLINE);
@@ -23,6 +24,7 @@ void pho_conn_pool::start(boost::shared_ptr<phone_connection> conn)
 
 void pho_conn_pool::stop(boost::shared_ptr<phone_connection> conn)
 {
+    _DEBUG_PRINTF("%s (phone) disconnected me!\n", conn->socket().remote_endpoint().address().to_string().c_str());
     device_mgr::get().set_status(conn->socket().remote_endpoint().address().to_string(), DEVICE_STATUS_OFFLINE);
     connections_.erase(conn);
     conn->stop();
@@ -35,7 +37,7 @@ void pho_conn_pool::stop_all()
         device_mgr::get().set_status(c->socket().remote_endpoint().address().to_string(), DEVICE_STATUS_OFFLINE);
         c->stop();
     }
-
+    _DEBUG_PRINTF("disconnected all (phone)!\n");
     connections_.clear();
 }
 

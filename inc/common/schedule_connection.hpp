@@ -22,12 +22,13 @@ class schedule_connection
     , private boost::noncopyable
 {
  private:
+    boost::asio::io_service& ios_;
     boost::asio::ip::tcp::socket socket_;
     std::array<char, 8192> buffer_;
-    work_queue<std::array<char, 8192> > sche_work_queue_;
+    work_queue<std::string> sche_work_queue_;
 
 public:
-    schedule_connection(boost::asio::io_service&);
+    schedule_connection();
 
     boost::asio::ip::tcp::socket& socket();
 
@@ -37,7 +38,7 @@ public:
 
     void run_work_queue();
 
-    void do_task(std::stringstream& task, std::string& result);
+    void do_task(const std::string& task, std::string& result);
 
     void handle_read(const boost::system::error_code& e,
         std::size_t bytes_transferred);

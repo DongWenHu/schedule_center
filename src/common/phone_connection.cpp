@@ -1,12 +1,15 @@
 #include "phone_connection.hpp"
 #include "pho_conn_pool.hpp"
+#include "typedefs.h"
+#include "task_processor.hpp"
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 
 namespace mpsp{
 
-phone_connection::phone_connection( boost::asio::io_service& io_service)
-    : socket_(io_service)
+phone_connection::phone_connection()
+    : ios_(mpsp::task_processor::get().get_io_service())
+    , socket_(ios_)
 {
 }
 
@@ -37,13 +40,10 @@ void phone_connection::handle_read(const boost::system::error_code& e,
 {
     if (!e)//接收时没有发生错误
     {
-        ////在此处处理来的数据
-        //MSG_CMD_APP mca;
-        //std::istringstream iarchiveStream(buffer_.data());
-        //boost::archive::text_iarchive iarchive(iarchiveStream);
-        //iarchive >> mca;
-        //do_read_msg(mca);
-
+        //在此处处理来的数据
+        MSG_CMD_APP_RECV mca;
+        memcpy(&mca.cmd, buffer_.data(), sizeof(mca));
+        do_read_msg(mca);
         socket_.async_read_some(boost::asio::buffer(buffer_),
             boost::bind(&phone_connection::handle_read,
             shared_from_this(),
@@ -60,7 +60,7 @@ void phone_connection::handle_read(const boost::system::error_code& e,
     }
 }
 
-void phone_connection::do_read_msg(const MSG_CMD_APP& mca)
+void phone_connection::do_read_msg(const MSG_CMD_APP_RECV& mca)
 {
     switch (mca.cmd)
     {
@@ -97,15 +97,14 @@ void phone_connection::handle_write(const boost::system::error_code& e)
 
 void phone_connection::restart_lua()
 {
-    MSG_CMD_APP mca;
+    MSG_CMD_APP_SEND mca;
     mca.cmd = CMD_APP_RESTART_LUA;
 
-    std::ostringstream  oarchiveStream;
-    boost::archive::text_oarchive  oarchive(oarchiveStream);
-    oarchive << mca;
-
     boost::system::error_code ec;
-    socket_.write_some(boost::asio::buffer(oarchiveStream.str()), ec);
+    if (socket_.is_open())
+    {
+        socket_.write_some(boost::asio::buffer(&mca, sizeof(mca)), ec);
+    }
 }
 
 } // namespace mpsp
