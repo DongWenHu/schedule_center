@@ -1,0 +1,10 @@
+﻿生成启动时间为 2016/5/16 11:47:06。
+     1>项目“D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\ALL_BUILD.vcxproj”在节点 2 上(Build 个目标)。
+     1>CustomBuild:
+         Building Custom Rule D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/CMakeLists.txt
+         CMake does not need to re-run because D:\ALL\鎵嬫満妯℃嫙骞冲彴_svn\02.code\schedule_center\src\build\CMakeFiles\generate.stamp is up-to-date.
+     1>已完成生成项目“D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\ALL_BUILD.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.22

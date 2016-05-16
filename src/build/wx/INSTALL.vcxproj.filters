@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\CMakeFiles\1621f95a2aa4224ef3a61808216435b8\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{DD60A340-80EF-3E85-9080-15DFD2232D04}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

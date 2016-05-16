@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{65490D11-0FF2-3C8A-9885-493BA7FE24CA}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>mpsp</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\bin\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mpsp.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mpsp</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\bin\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mpsp.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mpsp</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\bin\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">mpsp.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">mpsp</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\bin\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">mpsp.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">mpsp</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4819;4715;4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\Debug\common.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\Debug\wx.lib;mysqlcppconn.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/$(Configuration);D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static/$(Configuration);D:/boost_1_60_0/lib32-msvc-12.0;D:/boost_1_60_0/lib32-msvc-12.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/Debug/mpsp.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/Debug/mpsp.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4996;4819;4715;4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\Release\common.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\Release\wx.lib;mysqlcppconn.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/$(Configuration);D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static/$(Configuration);D:/boost_1_60_0/lib32-msvc-12.0;D:/boost_1_60_0/lib32-msvc-12.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/Release/mpsp.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/Release/mpsp.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4996;4819;4715;4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\MinSizeRel\common.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\MinSizeRel\wx.lib;mysqlcppconn.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/$(Configuration);D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static/$(Configuration);D:/boost_1_60_0/lib32-msvc-12.0;D:/boost_1_60_0/lib32-msvc-12.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/MinSizeRel/mpsp.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/MinSizeRel/mpsp.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4819;4715;4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0501;WIN32_LEAN_AND_MEAN;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\wx;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\common;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\inc\public;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\..\..\ext\mysql\include;D:\boost_1_60_0;F:\boost_1_60_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\RelWithDebInfo\common.lib;D:\ALL\手机模拟平台_svn\02.code\schedule_center\lib\static\RelWithDebInfo\wx.lib;mysqlcppconn.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/$(Configuration);D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static;D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/../../lib/static/$(Configuration);D:/boost_1_60_0/lib32-msvc-12.0;D:/boost_1_60_0/lib32-msvc-12.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/RelWithDebInfo/mpsp.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/ALL/手机模拟平台_svn/02.code/schedule_center/bin/RelWithDebInfo/mpsp.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\Users\rzx\Desktop\cmake-3.5.2-win32-x86\bin\cmake.exe -HD:/ALL/手机模拟平台_svn/02.code/schedule_center/src -BD:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build --check-stamp-file D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\Users\rzx\Desktop\cmake-3.5.2-win32-x86\bin\cmake.exe -HD:/ALL/手机模拟平台_svn/02.code/schedule_center/src -BD:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build --check-stamp-file D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+C:\Users\rzx\Desktop\cmake-3.5.2-win32-x86\bin\cmake.exe -HD:/ALL/手机模拟平台_svn/02.code/schedule_center/src -BD:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build --check-stamp-file D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+C:\Users\rzx\Desktop\cmake-3.5.2-win32-x86\bin\cmake.exe -HD:/ALL/手机模拟平台_svn/02.code/schedule_center/src -BD:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build --check-stamp-file D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/mpsp/CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\build\mpsp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\main.cpp"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build/ZERO_CHECK.vcxproj">
+      <Project>6ECF479D-2E85-34F0-AB33-D0776CE7CFB6</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build/common/common.vcxproj">
+      <Project>C46E6846-F1A1-332D-B373-7F573AFAB930</Project>
+    </ProjectReference>
+    <ProjectReference Include="D:/ALL/手机模拟平台_svn/02.code/schedule_center/src/build/wx/wx.vcxproj">
+      <Project>2DD547D6-8581-34AB-88BF-8C6AA6A36753</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

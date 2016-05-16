@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D68490C5-317D-35ED-AFDB-585369F1AD59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
