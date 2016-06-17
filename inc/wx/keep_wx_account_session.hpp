@@ -8,6 +8,8 @@ namespace mpsp{
 
 class keep_wx_account_session : public a_session
 {
+    std::map<std::string, int> login_failed_cnt_;
+
 _SLOTS:
     void on_restart_lua_end(int cmd);
 

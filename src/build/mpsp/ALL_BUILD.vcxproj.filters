@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <CustomBuild Include="D:\ALL\手机模拟平台_svn\02.code\schedule_center\src\mpsp\CMakeLists.txt" />
-  </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
-</Project>

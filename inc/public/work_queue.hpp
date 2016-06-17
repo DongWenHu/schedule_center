@@ -64,6 +64,14 @@ public:
         return ret;
     }
 
+    void clear()
+    {
+        stop();
+        boost::unique_lock<boost::mutex> lock(tasks_mutex);
+        tasks_.clear();
+        is_stopped_ = false;
+    }
+
 };
 
 }

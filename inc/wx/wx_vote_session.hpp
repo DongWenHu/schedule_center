@@ -15,6 +15,7 @@ class wx_vote_session : public a_session
 {
     boost::property_tree::ptree& pt_;
     wx_vote* wv_;
+    std::map<std::string, int> login_failed_cnt_;
 
 _SLOTS:
     void on_restart_lua_end(int cmd);

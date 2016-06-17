@@ -56,6 +56,7 @@ typedef struct _MSG_CMD_APP_RECV
 
 //----------------------------schedule 命令--------------------------------
 const int CMD_SCHE_WX_VOTE = 0x10000000;    //  投票命令
+const int CMD_SCHE_WX_GET_RESULT = 0x10000001;  //  获取投票结果命令
 
 typedef struct _MSG_CMD_SCHE_SEND
 {

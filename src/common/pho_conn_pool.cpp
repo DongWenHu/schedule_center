@@ -17,7 +17,7 @@ void pho_conn_pool::start(boost::shared_ptr<phone_connection> conn)
         _DEBUG_PRINTF("%s (phone) connected me again, I close last one!\n", conn->socket().remote_endpoint().address().to_string().c_str());
         stop(pconn);
     }
-    device_mgr::get().set_status(conn->socket().remote_endpoint().address().to_string(), DEVICE_STATUS_ONLINE);
+    device_mgr::get().set_status(conn->socket().remote_endpoint().address().to_string(), DEVICE_STATUS_ONLINE_IDLE);
     conn->start();
     connections_.insert(conn);
 }

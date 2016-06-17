@@ -39,14 +39,23 @@ std::string config_mgr::get_value(const std::string& type, const std::string& ke
         return "";
     }
 
-    boost::property_tree::ptree pt1;
-    pt1 = pt_.get_child(type);
-    if (pt1.find(key) == pt1.not_found())
+    try
     {
+        boost::property_tree::ptree pt1;
+        pt1 = pt_.get_child(type);
+        if (pt1.find(key) == pt1.not_found())
+        {
+            return "";
+        }
+
+        return pt1.get<std::string>(key);
+    }
+    catch (boost::property_tree::json_parser_error& e)
+    {
+        printf("config_mgr::get_value: %s!\n", e.what());
         return "";
     }
 
-    return pt1.get<std::string>(key);
 }
 
 }

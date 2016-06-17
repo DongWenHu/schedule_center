@@ -13,10 +13,13 @@
 
 namespace mpsp{
 
-const int DEVICE_STATUS_ONLINE = 1;
-const int DEVICE_STATUS_OFFLINE = 2;
-const int DEVICE_STATUS_BUSY = 3;
-const int DEVICE_STATUS_IDLE = 1;
+const int DEVICE_STATUS_ONLINE_IDLE = 1;        //  在线空闲状态
+const int DEVICE_STATUS_OFFLINE = 2;            //  离线状态
+const int DEVICE_STATUS_TASK_BEGIN = 3;         //  任务开始状态
+const int DEVICE_STATUS_WX_VOTING = 4;          //  微信投票中状态
+const int DEVICE_STATUS_WX_VOTE_END = 5;        //  微信投票结束状态
+const int DEVICE_STATUS_DAILY_TASK = 6;         //  执行日常任务状态
+const int DEVICE_STATUS_DAILY_TASK_END = 7;     //  执行日常任务结束状态
 
 typedef struct _DEVICE_PRO
 {
@@ -39,15 +42,19 @@ public:
 
     bool init();
 
+    bool init_sql_conn();
+
     void set_status(const std::string& ip, int status);
     
     int get_status(const std::string& ip);
 
+    int get_status_count(int status);
+
     std::map<std::string, DEVICE_PRO> get_devices_pro_copy();
+
 	sql::Driver * driver;
 	sql::Connection* con;
 	sql::Statement* stmt;
-	sql::ResultSet* res;
 
 };
 

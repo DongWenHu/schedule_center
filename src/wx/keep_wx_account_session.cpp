@@ -39,8 +39,40 @@ void keep_wx_account_session::handle_read(const boost::system::error_code& e,
         _DEBUG_PRINTF("%s (phone dailytask) says: %s\n", socket_.remote_endpoint().address().to_string().c_str(), json_data);
         if (0 == pt.get<int>("result"))
         {
+            login_failed_cnt_.clear();
             wx_account_mgr::get().set_everyday_task(acc, WX_ACCOUNT_DAILYTASK_FINISHED);
         }
+        else
+        {
+            if (pt.get<std::string>("cmd") == CMD_WX_LOGIN)
+            {
+                if (pt.get<std::string>("message") == "Illegal account" ||
+                    pt.get<std::string>("message") == "User or password wrong" ||
+                    pt.get<std::string>("message") == "Need unlock" ||
+                    pt.get<std::string>("message") == "Need SMS verify" ||
+                    pt.get<std::string>("message") == "Need codes")
+                {
+                    wx_account_mgr::get().set_acc_status(acc, WX_ACCOUNT_STATUS_ABNORMAL);
+                }
+            }
+            //else
+            //{
+            //    if (login_failed_cnt_.find(acc) == login_failed_cnt_.end())
+            //    {
+            //        login_failed_cnt_[acc] = 1;
+            //    }
+            //    else
+            //    {
+            //        login_failed_cnt_[acc]++;
+            //        if (login_failed_cnt_[acc] > 3)
+            //        {
+            //            wx_account_mgr::get().set_acc_status(acc, WX_ACCOUNT_STATUS_ABNORMAL);
+            //        }
+            //    }
+            //}
+        }
+
+        wx_account_mgr::get().set_idle_account(acc);
         delete json_data;
 
     }
@@ -48,6 +80,7 @@ void keep_wx_account_session::handle_read(const boost::system::error_code& e,
     {
 
     }
+    device_mgr::get().set_status(ip_, DEVICE_STATUS_DAILY_TASK_END);
 }
 
 void keep_wx_account_session::bind_restart_lua_sig()
@@ -58,22 +91,17 @@ void keep_wx_account_session::bind_restart_lua_sig()
 void keep_wx_account_session::on_connected()
 {
     boost::system::error_code ec;
-    std::set<std::string> acs =
-        wx_account_mgr::get().get_address_pro_copy().at(ip_);
-
-    for (auto c : acs)
+    std::string acc;
+    while (wx_account_mgr::get().get_idle_not_daily_task_account(acc))
     {
-        std::map<std::string, WX_ACCOUNT_PRO> acc = wx_account_mgr::get().get_accounts_pro_copy();
-        if (acc[c].everyday_task_completed == WX_ACCOUNT_DAILYTASK_FINISHED)
-        {
-            continue;
-        }
+        device_mgr::get().set_status(ip_, DEVICE_STATUS_DAILY_TASK);
 
+        std::map<std::string, WX_ACCOUNT_PRO> apc = wx_account_mgr::get().get_accounts_pro_copy();
         boost::format fmterA(kkeep_wx_acc_cmd_format);
         fmterA%CMD_WX_LOGIN
-            %c
-            %acc[c].password
-            %acc[c].imei
+            %acc
+            %apc[acc].password
+            %apc[acc].imei
             %CMD_WX_ADD_NEAR_FRIEND
             %CMD_WX_RANDOM_SEND_SNS
             %CMD_WX_LOGOUT;
@@ -96,7 +124,7 @@ void keep_wx_account_session::on_connected()
                 this,
                 boost::asio::placeholders::error,
                 boost::asio::placeholders::bytes_transferred,
-                c));
+                acc));
             ios_.run();
             ios_.reset();
         }
@@ -112,7 +140,7 @@ void keep_wx_account_session::on_restart_lua_end(int cmd)
     }
 
     restart_lua_timer_.cancel();
-    device_mgr::get().set_status(ip_, DEVICE_STATUS_IDLE);
+    device_mgr::get().set_status(ip_, DEVICE_STATUS_ONLINE_IDLE);
     start();
 }
 

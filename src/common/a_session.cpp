@@ -22,7 +22,7 @@ void a_session::start()
     }
 
     //设置当前设备繁忙
-    device_mgr::get().set_status(ip_, DEVICE_STATUS_BUSY);
+    device_mgr::get().set_status(ip_, DEVICE_STATUS_TASK_BEGIN);
 
     // 绑定手机APP连接重启lua脚本结束信号
     if (!restart_lua_conn_.connected())
@@ -50,7 +50,7 @@ void a_session::start()
     }
 
     //设置当前设备空闲
-    device_mgr::get().set_status(ip_, DEVICE_STATUS_IDLE);
+    device_mgr::get().set_status(ip_, DEVICE_STATUS_ONLINE_IDLE);
 }
 
 void a_session::on_restart_lua_timeout(const boost::system::error_code& e)

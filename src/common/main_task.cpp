@@ -1,7 +1,13 @@
 #include "main_task.hpp"
 #include "protocol_define.h"
+#include "tasks_mgr.hpp"
+#include "wx_vote.hpp"
+#include "task_processor.hpp"
 #include <iostream>
 #include <boost/lexical_cast.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/make_shared.hpp>
 
 namespace mpsp{
 
@@ -13,6 +19,14 @@ main_task::main_task(boost::asio::io_service& ios)
 {
     signals_.add(SIGINT);
     signals_.add(SIGTERM);
+    signals_.add(SIGSEGV);
+    signals_.add(SIGABRT);
+#if defined(SIGHUP)
+    signals_.add(SIGHUP);
+#endif  //  defined(SIGHUP)
+#if defined(SIGBREAK)
+    signals_.add(SIGBREAK);
+#endif  //  defined(SIGBREAK)
 #if defined(SIGQUIT)
     signals_.add(SIGQUIT);
 #endif // defined(SIGQUIT)
@@ -37,7 +51,14 @@ void main_task::start()
 {
     start_phone_accept();
     start_schedule_accept();
+    boost::asio::deadline_timer::duration_type td(0, 0, 20, 0);
+    task_processor::get().run_after(td, boost::bind(&main_task::start_others, this));
+}
+
+void main_task::start_others()
+{
     keep_wx_account_task_.start();
+    boost::thread trd(boost::bind(&main_task::start_work_queue, this));
 }
 
 void main_task::start_phone_accept()
@@ -92,6 +113,45 @@ void main_task::handle_stop()
     schedule_acceptor_.close();
     pho_conn_pool::get().stop_all();
     sche_conn_pool::get().stop_all();
+    io_service_.stop();
+}
+
+void main_task::start_work_queue()
+{
+    std::string result;
+    while (true)
+    {
+        TASKS_INFO ti;
+        ti = tasks_mgr::get().work_queue_.pop_task();
+        do_work_queue(ti.description, result);
+        tasks_mgr::get().set_result(ti.id, result);
+        tasks_mgr::get().set_status(ti.id, TASK_STATUS_FINISHED);
+    }
+}
+
+void main_task::do_work_queue(const std::string& task, std::string& result)
+{
+    boost::property_tree::ptree pt;
+
+    std::stringstream ss;
+    ss << task.c_str();
+    boost::property_tree::read_json<boost::property_tree::ptree>(ss, pt);
+
+    boost::shared_ptr<task_interface> task_i;
+
+    int cmd = pt.get<int>("task_cmd");
+    switch (cmd)
+    {
+    case CMD_SCHE_WX_VOTE:
+        task_i = boost::make_shared<wx_vote>();
+        break;
+
+    default:
+        return;
+    }
+
+    task_i->do_task(pt, result);
+
 }
 
 } // namespace mpsp

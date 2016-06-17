@@ -26,7 +26,11 @@ public:
 
     void add_suc_count(int);
 
+    int get_suc_count();
+
     bool need_vote();
+
+    bool need_wait_vote();
 };
 
 }

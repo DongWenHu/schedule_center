@@ -1,18 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 project(common)
 
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/static)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../inc/wx 
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../inc/common 
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../inc/public
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../ext/mysql/include
-    )
-if(WIN32)
-    include_directories(D:/boost_1_60_0 F:/boost_1_60_0)
-	link_directories(D:/boost_1_60_0/lib32-msvc-12.0)
-    add_definitions(-D_WIN32_WINNT=0x0501 -DWIN32_LEAN_AND_MEAN)
-endif()
-  
 aux_source_directory(. COMMON_SRC_LIST)
 
 add_library(common STATIC ${COMMON_SRC_LIST})
@@ -22,6 +10,6 @@ if(WIN32)
 endif()
 
 install(TARGETS common
-        RUNTIME DESTINATION ../bin
-        LIBRARY DESTINATION ../lib
-        ARCHIVE DESTINATION ../lib/static)
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static)

@@ -14,12 +14,19 @@ keep_wx_account_task::keep_wx_account_task()
 
 void keep_wx_account_task::start()
 {
-    wx_account_mgr::get().reset_all_everyday_task();
-
     // 每日24:00重置养账号任务
+    //reset_task();
     boost::posix_time::ptime p(boost::gregorian::day_clock::local_day() + boost::gregorian::days(1),
         boost::posix_time::hours(0 - 8));
-    mpsp::task_processor::get().run_at(p, boost::bind(&keep_wx_account_task::start, this));
+    mpsp::task_processor::get().run_at(p, boost::bind(&keep_wx_account_task::reset_task, this));
+
+    //boost::asio::deadline_timer::duration_type td(0, 0, 10, 0);
+    //mpsp::task_processor::get().run_after(td, boost::bind(&keep_wx_account_task::do_task, this));
+}
+
+void keep_wx_account_task::reset_task()
+{
+    wx_account_mgr::get().reset_all_everyday_task();
 
     // 每日时间(8:00 - 20:00)随机时间段执行任务，并每隔1个小时重新执行一次直至23:00
     boost::mt19937  rng((const unsigned int)time(0));
@@ -32,8 +39,6 @@ void keep_wx_account_task::start()
             boost::posix_time::seconds(rng() % 60));
         mpsp::task_processor::get().run_at(p2, boost::bind(&keep_wx_account_task::do_task, this));
     }
-    //boost::asio::deadline_timer::duration_type td(0, 0, 10, 0);
-    //mpsp::task_processor::get().run_after(td, boost::bind(&keep_wx_account_task::do_task, this));
 }
 
 void keep_wx_account_task::do_task()
@@ -42,7 +47,7 @@ void keep_wx_account_task::do_task()
 
     for (auto c : device_mgr::get().get_devices_pro_copy())
     {
-        if (c.second.status != DEVICE_STATUS_ONLINE)
+        if (c.second.status != DEVICE_STATUS_ONLINE_IDLE)
             continue;
 
         boost::shared_ptr<keep_wx_account_session> keep_wx_acc_ses(new keep_wx_account_session(c.first, SCRIPT_PORT));

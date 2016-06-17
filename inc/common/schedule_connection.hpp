@@ -36,12 +36,10 @@ public:
 
     void stop();
 
-    void run_work_queue();
-
-    void do_task(const std::string& task, std::string& result);
-
     void handle_read(const boost::system::error_code& e,
         std::size_t bytes_transferred);
+
+    void on_read(const std::string& data);
 };
 
 } // namespace mpsp

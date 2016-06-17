@@ -13,6 +13,8 @@ public:
 
     void start();
 
+    void reset_task();
+
     void do_task();
 };
 

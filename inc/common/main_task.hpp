@@ -41,12 +41,15 @@ public:
     void start();
 
 protected:
+    void start_others();
     void listen_(boost::asio::ip::tcp::acceptor& acceptor_, const std::string& port_num);
     void start_phone_accept();
     void start_schedule_accept();
     void handle_phone_accept(const boost::system::error_code& e);
     void handle_schedule_accept(const boost::system::error_code& e);
     void handle_stop();
+    void start_work_queue();
+    void do_work_queue(const std::string& task, std::string& result);
 
 };
 
